@@ -1,0 +1,9 @@
+CROSSCOMPILE := arm-none-eabi-
+
+CC = $(CROSSCOMPILE)gcc
+AS = $(CROSSCOMPILE)as
+LD = $(CROSSCOMPILE)LD
+
+CFLAGS = -O2
+LDFLAGS = -L./
+ASFLAGS = -march=armv6
