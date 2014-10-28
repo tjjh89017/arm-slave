@@ -1,4 +1,4 @@
-arm-slave
+ARM SLAVE
 =========
 
 ARM OS
