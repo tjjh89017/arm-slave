@@ -30,7 +30,6 @@ all: $(KERNEL_OBJ)
 
 $(KERNEL_OBJ): $(OBJS)
 	$(CC) -T kernel.ld -o kernel.elf -O2 -nostdlib $(OBJS)
-	$(OBJCOPY) kernel.elf -O binary kernel.bin
 
 qemu: kernel.elf
 	@clear
