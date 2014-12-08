@@ -1,3 +1,5 @@
+#include "arm.h"
+
 # To make sure the section be the first in kernel
 .section ".text.boot"
 
@@ -6,8 +8,8 @@
 _start:
 	mov sp, #0x8000
 
-	ldr r1, =boot_bss_start
-	ldr r2, =boot_bss_end
+	ldr r1, =boot_data_start
+	ldr r2, =boot_data_end
 	mov r3, #0x00
 
 # clear boot bss section
@@ -20,7 +22,7 @@ _start:
 	msr cpsr_cxsf, #(SVC_MODE | NO_INT)
 	
 	# using user mode stack for boot
-	ldr sp, svc_stack
+	ldr sp, =svc_stack
 
 	bl start
 	b .
