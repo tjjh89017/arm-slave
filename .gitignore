@@ -28,5 +28,8 @@
 *.x86_64
 *.hex
 
-# Fish temp file
+# temp file
 *.DS_Store
+
+# vim temp file
+*.swp
