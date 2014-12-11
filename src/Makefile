@@ -31,7 +31,7 @@ $(PROG): $(OBJS)
 	$(CC) -T kernel.ld -o $(PROG) -O2 -nostdlib $(OBJS)
 
 clean:
-	rm -f $(OBJS) $(KERNEL_OBJ) $(PROG)
+	rm -f $(OBJS) $(PROG)
 
 qemu: $(PROG)
 	@clear
