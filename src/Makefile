@@ -5,7 +5,7 @@ QEMU = qemu-system-arm
 CC = $(CROSSCOMPILE)gcc
 # TODO fix it!
 AS = $(CROSSCOMPILE)gcc
-LD = $(CROSSCOMPILE)LD
+LD = $(CROSSCOMPILE)ld
 OBJCOPY = $(CROSSCOMPILE)objcopy
 
 CFLAGS = -march=armv6 -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -O2
@@ -13,6 +13,7 @@ CFLAGS += -I. -Iinclude/
 LDFLAGS = -L./
 ASFLAGS = -march=armv6 -Iinclude/
 
+PROG = kernel.elf
 OBJS = \
 	   boot.o \
 	   start.o
@@ -26,12 +27,17 @@ KERNEL_OBJ = kernel.o
 	$(AS) $(ASFLAGS) -c -o $@ $<
 
 
-all: $(KERNEL_OBJ)
+all: $(PROG)
 
 $(KERNEL_OBJ): $(OBJS)
-	$(CC) -T kernel.ld -o kernel.elf -O2 -nostdlib $(OBJS)
+	$(CC) -T kernel.ld -o $(PROG) -O2 -nostdlib $(OBJS)
 
-qemu: kernel.elf
+$(PROG): $(KERNEL_OBJ)
+
+clean:
+	rm -f $(OBJS) $(KERNEL_OBJ) $(PROG)
+
+qemu: $(PROG)
 	@clear
 	@echo "Press Ctrl-A and then X to terminate QEMU session\n"
 	$(QEMU) -M versatilepb -m 128 -cpu arm1176  -nographic -kernel kernel.elf
