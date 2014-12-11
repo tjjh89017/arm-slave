@@ -18,8 +18,6 @@ OBJS = \
 	   boot.o \
 	   start.o
 
-KERNEL_OBJ = kernel.o
-
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
@@ -29,10 +27,8 @@ KERNEL_OBJ = kernel.o
 
 all: $(PROG)
 
-$(KERNEL_OBJ): $(OBJS)
+$(PROG): $(OBJS)
 	$(CC) -T kernel.ld -o $(PROG) -O2 -nostdlib $(OBJS)
-
-$(PROG): $(KERNEL_OBJ)
 
 clean:
 	rm -f $(OBJS) $(KERNEL_OBJ) $(PROG)
