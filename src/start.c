@@ -1,5 +1,7 @@
 #include "arm.h"
 #include "type.h"
+#include "mmu.h"
+#include "memlayout.h"
 
 /* TODO need to find a place to put it */
 #define UART0 0x101f1000
