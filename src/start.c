@@ -34,7 +34,65 @@ void _putint(char *prefix, uint val, char * suffix)
 	}
 }
 
+extern uint32 _kernel_pgd;
+extern uint32 _user_pgd;
+
+uint32 *kernel_pgd = &_kernel_pgd;
+uint32 *user_pgd = &_user_pgd;
+
+void set_bootpgd(uint32 virt, uint32 phys, uint len, int dev_mem)
+{
+	uint32 pgd;
+	int index;
+
+	// convert all address into index
+	virt = PGD_INDEX(virt);
+	phys = PGD_INDEX(phys);
+	len  = PGD_INDEX(len);
+
+	for(index = 0; index < len; index++){
+		pgd = phy << PGD_SHIFT;
+
+		if(!dev_mem){
+			/*
+			 * normal memory mapping, kernel-only, cachable, bufferable
+			 */
+			pgd |= (AP_KO << AP_SHIFT) | PE_CACHE | PE_BUF | KPGE_TYPE;
+		}
+		else{
+			/*
+			 * device memory, non-cachable, non-bufferable
+			 */
+			pgd |= (AP_KO << 10) | KPGD_TYPE;
+		}
+		
+		// use different page table for user/kernel space
+		if(virt < NUM_UPDE){
+			user_pgd[virt] = pgd;
+		}
+		else{
+			kernel_pgd[virt] = pgd;
+		}
+
+		virt++;
+		phys++;
+	}
+}
+
 void start()
 {
 	_puts("booting...\n");
+	
+	// set pgd
+	set_bootpgd(0, 0, INIT_KERNEL_MAP, 0);
+	set_bootpgd(KERNEL_BASE, 0, INIT_KERNEL_MAP, 0);
+
+	// before enable MMU phys address works
+	int i = 0, j = 0;
+	for(i = 0; i < 0x4000 / 0x4; i += 8){
+		for(j = 0; j < 8; j++){
+			_putint(NULL, kernel_pgd[i + j], " ");
+		}
+		_puts("\n");
+	}
 }
