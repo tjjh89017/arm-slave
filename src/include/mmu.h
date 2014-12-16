@@ -12,6 +12,12 @@
 #define PE_CACHE (1 << 3) // cachable
 #define PE_BUF   (1 << 2) // bufferable
 
+// page types
+#define PE_TYPE_MASK 0x03 // mask for page type
+#define KPGD_TYPE    0x02 // "section" type for kernel PGD
+#define UPGD_TYPE    0x01 // "coarse page table" for user PGD
+#define PTE_TYPE     0x02 // execuable user page
+
 // 1st level
 #define PGD_SHIFT 20
 #define PGD_SIZE (1 << PGD_SHIFT)
