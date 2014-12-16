@@ -90,11 +90,14 @@ void start()
 	set_bootpgd(KERNEL_BASE, 0, INIT_KERNEL_MAP, 0);
 
 	// before enable MMU phys address works
-	int i = 0, j = 0;
-	for(i = 0; i < 0x4000 / 0x4; i += 8){
-		for(j = 0; j < 8; j++){
-			_putint(NULL, kernel_pgd[i + j], " ");
-		}
-		_puts("\n");
+	int i = 0;
+	for(i = 0; i < 0x4000 / 4; i++){
+		if(kernel_pgd[i])
+			_putint(NULL, kernel_pgd[i], "\n");
 	}
+	for(i = 0; i < 0x1000 / 4; i++){
+		if(user_pgd[i])
+			_putint(NULL, user_pgd[i], "\n");
+	}
+
 }
