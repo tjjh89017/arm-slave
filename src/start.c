@@ -53,7 +53,7 @@ void set_bootpgd(uint32 virt, uint32 phys, uint len, int dev_mem)
 	len  = PGD_INDEX(len);
 
 	for(index = 0; index < len; index++){
-		pgd = phy << PGD_SHIFT;
+		pgd = phys << PGD_SHIFT;
 
 		if(!dev_mem){
 			/*
