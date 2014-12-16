@@ -16,6 +16,24 @@ void _puts(char *s)
 	}
 }
 
+void _putint(char *prefix, uint val, char * suffix)
+{
+	char *arr = "0123456789ABCDEF";
+	int index = 0;
+
+	if(prefix){
+		_puts(prefix);
+	}
+
+	for(index = sizeof(val) * 8 - 4; index >= 0; index -= 4){
+		_uart_putc(arr[(val >> index) & 0x0f]);
+	}
+
+	if(suffix){
+		_puts(suffix);
+	}
+}
+
 void start()
 {
 	_puts("booting...\n");
