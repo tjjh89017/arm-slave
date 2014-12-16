@@ -29,9 +29,17 @@ SECTIONS
 		. += ENTRY_SVC_STACK_SIZE;
 		PROVIDE(svc_stack = .);
 
+		. = ALIGN(0x4000);
 		/* for kernel page table */
+		PROVIDE(_kernel_pgd = .);
+		. += 0x4000;
+
 		/* for user page table */
+		PROVIDE(_user_pgd = .);
+		. += 0x1000;
 
 		PROVIDE(boot_data_end = .);
 	}
+
+	PROVIDE(end = .);
 }
