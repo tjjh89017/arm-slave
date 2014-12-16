@@ -5,7 +5,7 @@
 #define KERNEL_BASE 0xc0000000
 #define KERNEL_LINK (KERNEL_BASE + EXTMEM)
 
-#define INIt_KERNEL_MAP 0x100000
+#define INIT_KERNEL_MAP 0x100000
 
 #define virt_to_phys(a) (((uint)(a)) - KERNEL_BASE)
 #define phys_to_virt(a) (((void*)(a)) + KERNEL_BASE)
