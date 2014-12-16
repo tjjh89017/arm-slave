@@ -59,7 +59,7 @@ void set_bootpgd(uint32 virt, uint32 phys, uint len, int dev_mem)
 			/*
 			 * normal memory mapping, kernel-only, cachable, bufferable
 			 */
-			pgd |= (AP_KO << AP_SHIFT) | PE_CACHE | PE_BUF | KPGE_TYPE;
+			pgd |= (AP_KO << AP_SHIFT) | PE_CACHE | PE_BUF | KPGD_TYPE;
 		}
 		else{
 			/*
@@ -69,7 +69,7 @@ void set_bootpgd(uint32 virt, uint32 phys, uint len, int dev_mem)
 		}
 		
 		// use different page table for user/kernel space
-		if(virt < NUM_UPDE){
+		if(virt < NUM_UPGD){
 			user_pgd[virt] = pgd;
 		}
 		else{
