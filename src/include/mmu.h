@@ -28,4 +28,11 @@
 #define PTE_SHIFT 12
 #define PTE_SIZE (1 << PTE_SHIFT)
 
+// user size
+#define UADDR_BITS 28 // max user app memory 256MB
+#define UADDR_SIZE (1 << UADDER_BITS)
+
+#define NUM_UPGD (1 << (UADDR_BITS - PGD_SHIFT))
+#define NUM_PTE (1 << (PGD_SHIFT - PTE_SHIFT))
+
 #endif
