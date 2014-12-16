@@ -28,7 +28,7 @@ OBJS = \
 all: $(PROG)
 
 $(PROG): $(OBJS)
-	$(CC) -T kernel.ld -o $(PROG) -O2 -nostdlib $(OBJS)
+	$(LD) -T kernel.ld -o $(PROG) -O2 -nostdlib $(OBJS)
 
 clean:
 	rm -f $(OBJS) $(PROG)
@@ -36,4 +36,4 @@ clean:
 qemu: $(PROG)
 	@clear
 	@echo "Press Ctrl-A and then X to terminate QEMU session\n"
-	$(QEMU) -M versatilepb -m 128 -cpu arm1176  -nographic -kernel kernel.elf
+	$(QEMU) -M versatilepb -m 128 -cpu arm1176 -nographic -kernel kernel.elf
