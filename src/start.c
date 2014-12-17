@@ -92,12 +92,16 @@ void start()
 	// before enable MMU phys address works
 	int i = 0;
 	for(i = 0; i < 0x4000 / 4; i++){
-		if(kernel_pgd[i])
+		if(kernel_pgd[i]){
+			_putint("kernel: ", i, " ");
 			_putint(NULL, kernel_pgd[i], "\n");
+		}
 	}
 	for(i = 0; i < 0x1000 / 4; i++){
-		if(user_pgd[i])
+		if(user_pgd[i]){
+			_putint("user: ", i, " ");
 			_putint(NULL, user_pgd[i], "\n");
+		}
 	}
 
 }
