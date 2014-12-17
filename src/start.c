@@ -112,7 +112,7 @@ void start()
 	}
 	for(i = 0; i < 0x1000 / 4; i++){
 		if(user_pgd[i]){
-			_putint("user: ", i, " ");
+			_putint("user:   ", i, " ");
 			_putint(NULL, user_pgd[i], "\n");
 		}
 	}
