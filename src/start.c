@@ -59,7 +59,7 @@ void set_bootpgd(uint32 virt, uint32 phys, uint len, int dev_mem)
 			/*
 			 * normal memory mapping, kernel-only, cachable, bufferable
 			 */
-			pgd |= (AP_KO << AP_SHIFT) | PE_CACHE | PE_BUF | KPGD_TYPE;
+			pgd |= (AP_KO << 10) | PE_CACHE | PE_BUF | KPGD_TYPE;
 		}
 		else{
 			/*

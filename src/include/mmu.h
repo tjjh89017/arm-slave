@@ -2,7 +2,6 @@
 #define __MMU_H__
 
 // accesss permission AP
-#define AP_SHIFT 10
 #define AP_NA    0x00 // no access
 #define AP_KO    0x01 // kernel only
 #define AP_KUR   0x02 // user write only
