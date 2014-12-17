@@ -96,7 +96,7 @@ void start()
 	}
 
 	set_bootpgd(VEC_TBL, 0, 1 << PGD_SHIFT, 0);
-	set_bootpgd(KERNEL_BASE + DEVBASE, DEV_BASE, DEV_MEM_SIZE, 1);
+	set_bootpgd(KERNEL_BASE + DEV_BASE, DEV_BASE, DEV_MEM_SIZE, 1);
 
 #ifdef __DEBUG__
 	
