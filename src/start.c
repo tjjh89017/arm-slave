@@ -4,6 +4,8 @@
 #include "memlayout.h"
 #include "device/versatile_pb.h"
 
+#define __DEBUG__
+
 void _uart_putc(int c)
 {
 	volatile uint8 *uart0 = (uint8*)UART0;
