@@ -2,9 +2,8 @@
 #include "type.h"
 #include "mmu.h"
 #include "memlayout.h"
+#include "device/versatile_pb.h"
 
-/* TODO need to find a place to put it */
-#define UART0 0x101f1000
 void _uart_putc(int c)
 {
 	volatile uint8 *uart0 = (uint8*)UART0;
