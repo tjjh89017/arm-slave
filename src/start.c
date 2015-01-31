@@ -178,9 +178,4 @@ void start()
 	 * Load PGD
 	 */
 	load_bootpgd(kernel_pgd, user_pgd);
-
-#ifdef __DEBUG__
-	
-	_puts("Paging on...\n");
-#endif
 }
