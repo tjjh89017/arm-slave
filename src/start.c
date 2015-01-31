@@ -83,6 +83,61 @@ void set_bootpgd(uint32 virt, uint32 phys, uint len, int dev_mem)
 	}
 }
 
+static void _flush_TLB()
+{
+	int val = 0;
+	asm("mcr p15, 0, %[v], c8, c7, 0" : : [r]"r"(val) : );
+}
+
+void load_bootpgd(uint32 *k_pgd, uint32 *u_pgd)
+{
+	int ret;
+	int val;
+
+	/*
+	 * We skip ARM version checking
+	 */
+
+
+	/*
+	 * Set all domain into checking permission mode
+	 * TODO domain need to use for multi-user in the future
+	 */
+	val = 0x55555555;
+	asm("mcr p15, 0, %[v], c3, c0, 0" : : [v]"r"(val) : );
+
+	/*
+	 * Using 2 TTB
+	 * TTB0 for user
+	 * TTB1 for kernel
+	 * 0x00000000 - 0x80000000 for user
+	 * N = 1
+	 */
+	val = 32 - UADDR_BITS;
+	asm("mcr p15, 0, %[v], c2, c0, 2" : : [v]"r"(val) : );
+
+	/*
+	 * Set kernel PGD
+	 */
+	val = (uint)k_pgd | 0x00;
+	asm("mcr p15, 0, %[v], c2, c0, 1" : : [v]"r"(val) : );
+
+	/*
+	 * Set user PGD
+	 */
+	val = (uint)u_pgd | 0x00;
+	asm("mcr p15, 0, %[v], c2, c0, 0" : : [v]"r"(val) : );
+
+	/*
+	 * Enable paging
+	 */
+	asm("mrc p15, 0, %[v], c1, c0, 0" : [v]"r"(val) : : );
+	val |= 0x80300d;
+	asm("mcr p15, 0, %[v], c1, c0, 0" : : [v]"r"(val) : );
+
+	_flush_TLB();
+}
+
 void start()
 {
 	uint32 vectbl;
@@ -117,4 +172,9 @@ void start()
 		}
 	}
 #endif
+
+	/*
+	 * Load PGD
+	 */
+	load_bootpgd(kernel_pgd, user_pgd);
 }
