@@ -40,6 +40,7 @@ void _putint(char *prefix, uint val, char * suffix)
 extern uint32 _kernel_pgd;
 extern uint32 _user_pgd;
 extern void *end;
+extern void jump_svcstack();
 
 uint32 *kernel_pgd = &_kernel_pgd;
 uint32 *user_pgd = &_user_pgd;
