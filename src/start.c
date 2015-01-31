@@ -175,7 +175,12 @@ void start()
 #endif
 
 	/*
-	 * Load PGD
+	 * Load PGD, and enable paging
 	 */
 	load_bootpgd(kernel_pgd, user_pgd);
+
+	/*
+	 * set stack top to SVC stck
+	 */
+	jump_svcstack();
 }
