@@ -26,3 +26,11 @@ _start:
 
 	bl start
 	b .
+
+# switch to kernel address
+.global
+jump_svcstack:
+	mov r0, sp
+	add r0, r0, #KERNEL_BASE
+	mov sp, r0
+	mov pc, lr
