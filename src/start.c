@@ -183,4 +183,11 @@ void start()
 	 * set stack top to SVC stck
 	 */
 	jump_svcstack();
+
+#ifdef __debug__
+	/*
+	 * stay
+	 */
+	asm("b ." : : : );
+#endif
 }
