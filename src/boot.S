@@ -29,7 +29,7 @@ _start:
 	b .
 
 # switch to kernel address
-.global
+.global jump_svcstack
 jump_svcstack:
 	mov r0, sp
 	add r0, r0, #KERNEL_BASE
