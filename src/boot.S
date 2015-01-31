@@ -1,4 +1,5 @@
 #include "arm.h"
+#include "memlayout.h"
 
 # To make sure the section be the first in kernel
 .section ".text.boot"
