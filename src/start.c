@@ -131,7 +131,7 @@ void load_bootpgd(uint32 *k_pgd, uint32 *u_pgd)
 	/*
 	 * Enable paging
 	 */
-	asm("mrc p15, 0, %[v], c1, c0, 0" : [v]"r"(val) : : );
+	asm("mrc p15, 0, %[v], c1, c0, 0" : [v]"=r"(val) : : );
 	val |= 0x80300d;
 	asm("mcr p15, 0, %[v], c1, c0, 0" : : [v]"r"(val) : );
 
