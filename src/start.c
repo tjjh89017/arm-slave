@@ -92,13 +92,13 @@ void start()
 	set_bootpgd(0, 0, INIT_KERNEL_MAP, 0);
 	set_bootpgd(KERNEL_BASE, 0, INIT_KERNEL_MAP, 0);
 
-	vectbl = phys_to_virt_wo(VEC_TBL & PGD_MASK);
+	vectbl = phys_to_virt_wo(VECTOR_TABLE & PGD_MASK);
 	if(vectbl <= (uint32)&end){
 		_puts("error: vector table overlaps kernel\n");
 	}
 
-	set_bootpgd(VEC_TBL, 0, 1 << PGD_SHIFT, 0);
-	set_bootpgd(KERNEL_BASE + DEV_BASE, DEV_BASE, DEV_MEM_SIZE, 1);
+	set_bootpgd(VECTOR_TABLE, 0, 1 << PGD_SHIFT, 0);
+	set_bootpgd(KERNEL_BASE + DEVICE_BASE, DEVICE_BASE, DEVICE_MEM_SIZE, 1);
 
 #ifdef __DEBUG__
 	
