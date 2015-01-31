@@ -86,7 +86,7 @@ void set_bootpgd(uint32 virt, uint32 phys, uint len, int dev_mem)
 static void _flush_TLB()
 {
 	int val = 0;
-	asm("mcr p15, 0, %[v], c8, c7, 0" : : [r]"r"(val) : );
+	asm("mcr p15, 0, %[v], c8, c7, 0" : : [v]"r"(val) : );
 }
 
 void load_bootpgd(uint32 *k_pgd, uint32 *u_pgd)
