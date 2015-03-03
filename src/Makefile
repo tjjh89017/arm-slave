@@ -11,6 +11,7 @@ OBJCOPY = $(CROSSCOMPILE)objcopy
 
 CFLAGS = -march=armv6 -fno-pic -static -fno-builtin -fno-strict-aliasing -Wall -O2
 CFLAGS += -I. -Iinclude/
+CFLAGS += -g
 LDFLAGS = -L./
 ASFLAGS = -march=armv6 -Iinclude/
 
