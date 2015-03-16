@@ -41,5 +41,15 @@ SECTIONS
 		PROVIDE(boot_data_end = .);
 	}
 
+	. = ALIGN(0x1000);
+
+	PROVIDE(data_start = .);
+
+	PROVIDE(data_end = .);
+	PROVIDE(bss_start = .);
+
+	PROVIDE(bss_end = .);
+
+	. = ALIGN(0x1000);
 	PROVIDE(end = .);
 }
