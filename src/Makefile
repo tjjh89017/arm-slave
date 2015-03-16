@@ -1,7 +1,7 @@
 CROSSCOMPILE := arm-none-eabi-
 
 QEMU = qemu-system-arm
-GDBSERVER = -s
+GDBSERVER = -s -S
 
 CC = $(CROSSCOMPILE)gcc
 # TODO fix it!
