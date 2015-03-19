@@ -39,6 +39,7 @@ void _putint(char *prefix, uint val, char * suffix)
 
 extern uint32 _kernel_pgd;
 extern uint32 _user_pgd;
+extern void *bss_start;
 extern void *end;
 extern void jump_svcstack();
 
@@ -139,6 +140,11 @@ void load_bootpgd(uint32 *k_pgd, uint32 *u_pgd)
 	_flush_TLB();
 }
 
+void clear_bss()
+{
+	memset(&bss_start, 0, (uint)end - (uint)bss_start);
+}
+
 void start()
 {
 	uint32 vectbl;
@@ -183,5 +189,7 @@ void start()
 	 * set stack top to SVC stck
 	 */
 	jump_svcstack();
+
+	clear_bss();
 
 }
