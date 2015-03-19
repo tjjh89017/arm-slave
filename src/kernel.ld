@@ -44,10 +44,14 @@ SECTIONS
 	. = ALIGN(0x1000);
 
 	PROVIDE(data_start = .);
-
+	.data : {
+		*(.data .data.*)
+	}
 	PROVIDE(data_end = .);
 	PROVIDE(bss_start = .);
-
+	.bss : {
+		*(.bss .bss.* COMMON)
+	}
 	PROVIDE(bss_end = .);
 
 	. = ALIGN(0x1000);
