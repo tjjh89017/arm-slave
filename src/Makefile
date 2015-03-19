@@ -1,6 +1,7 @@
 CROSSCOMPILE := arm-none-eabi-
 
 QEMU = qemu-system-arm
+# -s for start gdbserver, -S for pause at startup
 GDBSERVER = -s -S
 
 CC = $(CROSSCOMPILE)gcc
