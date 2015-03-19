@@ -17,6 +17,8 @@ ASFLAGS = -march=armv6 -Iinclude/
 
 PROG = kernel.elf
 OBJS = \
+	   string.o \
+	   \
 	   boot.o \
 	   start.o
 
