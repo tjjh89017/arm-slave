@@ -28,8 +28,9 @@ _start:
 	bl start
 
 	# use wfe sleep rather than busy wait
-	#b .
-	wfe
+	#but RPI1 ARM1176 donesn't support it
+	b .
+	#wfe
 
 # switch to kernel address
 .global jump_svcstack
