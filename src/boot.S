@@ -26,7 +26,10 @@ _start:
 	ldr sp, =svc_stack
 
 	bl start
-	b .
+
+	# use wfe sleep rather than busy wait
+	#b .
+	wfe
 
 # switch to kernel address
 .global jump_svcstack
