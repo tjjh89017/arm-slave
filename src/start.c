@@ -192,4 +192,6 @@ void start()
 
 	clear_bss();
 
+	cli();
+	sti();
 }
