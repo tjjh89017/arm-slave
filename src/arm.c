@@ -7,7 +7,7 @@ void cli()
 	uint v;
 	// disable interrupt IRQ, but not FIQ, still allow FIQ
 	asm("mrs %[v], cpsr" : [v]"=r"(v) : :);
-	val |= DIS_INT;
+	v |= DIS_INT;
 	asm("msr cpsr_cxsf, %[v]" : :[v]"r"(v) :);
 }
 
@@ -17,6 +17,6 @@ void sti()
 
 	// enable interrupt IRQ, FIQ still
 	asm("mrs %[v], cpsr" : [v]"=r"(v) : :);
-	val &= ~DIS_INT;
+	v &= ~DIS_INT;
 	asm("msr cpsr_cxsf, %[v]" : : [v]"r"(v) :);
 }
