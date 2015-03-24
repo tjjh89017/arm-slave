@@ -20,3 +20,5 @@ void sti()
 	v &= ~DIS_INT;
 	asm("msr cpsr_cxsf, %[v]" : : [v]"r"(v) :);
 }
+
+

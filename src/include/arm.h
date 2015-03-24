@@ -24,6 +24,8 @@
 
 void cli();
 void sti();
+void pushcli();
+void popcli();
 
 #endif
 
