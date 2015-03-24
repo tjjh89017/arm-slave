@@ -20,7 +20,11 @@
 #define UND_MODE    0x1b
 #define SYS_MODE    0x1f
 
+#ifndef __ASSEMBLER__
+
 void cli();
 void sti();
+
+#endif
 
 #endif
