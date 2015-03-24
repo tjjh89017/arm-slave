@@ -21,7 +21,8 @@ OBJS = \
 	   string.o \
 	   \
 	   boot.o \
-	   start.o
+	   start.o \
+	   arm.o
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<

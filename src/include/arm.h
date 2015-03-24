@@ -20,4 +20,7 @@
 #define UND_MODE    0x1b
 #define SYS_MODE    0x1f
 
+void cli();
+void sti();
+
 #endif
