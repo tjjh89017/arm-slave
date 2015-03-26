@@ -191,7 +191,5 @@ void start()
 	jump_svcstack();
 
 	clear_bss();
-
-	cli();
-	sti();
+	kmain();
 }
