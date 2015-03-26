@@ -7,7 +7,7 @@
 // TODO fix it, find a better place
 #define NCPU 4
 struct cpu cpus[NCPU];
-struct *cpu;
+struct cpu *cpu;
 
 void kmain()
 {
