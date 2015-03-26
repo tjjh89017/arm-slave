@@ -22,7 +22,8 @@ OBJS = \
 	   \
 	   boot.o \
 	   start.o \
-	   arm.o
+	   arm.o \
+	   main.o
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
