@@ -13,4 +13,7 @@ void kmain()
 {
 	cpu = &cpus[0];
 
+	volatile uint8 *uart0 = (uint8)(UART0 + KERNEL_BASE);
+	*urat0 = 'k';
+
 }
