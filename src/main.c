@@ -12,9 +12,6 @@ struct cpu *cpu;
 
 void kmain()
 {
+	UART0_puts("kmain:\n");
 	cpu = &cpus[0];
-
-	volatile uint8 *uart0 = (uint8*)(UART0 + KERNEL_BASE);
-	*uart0 = 'k';
-
 }

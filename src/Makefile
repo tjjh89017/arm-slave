@@ -23,7 +23,9 @@ OBJS = \
 	   boot.o \
 	   start.o \
 	   arm.o \
-	   main.o
+	   main.o \
+	   \
+	   UART0.o
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
