@@ -3,6 +3,7 @@
 #include "proc.h"
 #include "memlayout.h"
 #include "mmu.h"
+#include "device/versatile_pb.h"
 
 // TODO fix it, find a better place
 #define NCPU 4
