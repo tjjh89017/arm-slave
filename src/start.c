@@ -19,7 +19,7 @@ void _puts(char *s)
 	}
 }
 
-void _putint(char *prefix, uint val, char * suffix)
+void _putint(char *prefix, uint val, char *suffix)
 {
 	char *arr = "0123456789abcdef";
 	int index = 0;
