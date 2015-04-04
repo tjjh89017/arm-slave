@@ -13,6 +13,7 @@ It's maked for IoT OS, but now it's just a practice. I think it will rebuild the
 MIT LICENSE
 
 ##TODO
++ research in `Timer`, `UART0`
 + research in `IRQ`, `FIQ`
 + Finish `spinlock` implement
 + `virtual memory` alloc
