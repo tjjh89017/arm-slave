@@ -10,7 +10,7 @@ struct cpu {
 	// depth of pushcli nesting
 	int ncli;
 	// were interrupts enabled before pushcli?
-	int interna;
+	int intena;
 };
 
 #endif
