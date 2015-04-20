@@ -31,12 +31,28 @@ int int_enabled()
 
 void pushcli()
 {
+	int enabled = int_enabled();
 
+	cli();
 
+	// TODO now we only support 1 cpu, we have to support multi-core
+	if(cpu->ncli++ == 0){
+		cpu->intena = enabled;
+	}
 }
 
 void popcli()
 {
+	if(int_enabled()){
+		// TODO need an error msg or Kernel panic output
+	}
 
+	// TODO support multi-core
+	if(--cpu->ncli < 0){
+		// TODO need panic
+	}
 
+	if(cpu->ncli == 0 && cpu->intena){
+		sti();
+	}
 }
