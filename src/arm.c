@@ -21,4 +21,14 @@ void sti()
 	asm("msr cpsr_cxsf, %[v]" : : [v]"r"(v) :);
 }
 
+void pushcli()
+{
 
+
+}
+
+void popcli()
+{
+
+
+}
