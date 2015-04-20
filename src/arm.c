@@ -21,6 +21,14 @@ void sti()
 	asm("msr cpsr_cxsf, %[v]" : : [v]"r"(v) :);
 }
 
+int int_enabled()
+{
+	int v;
+	asm("mrs %[v], cpsr" : [v]"=r"(v) : :);
+
+	return !(v & DIS_INT);
+}
+
 void pushcli()
 {
 
