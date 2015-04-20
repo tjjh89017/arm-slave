@@ -1,6 +1,10 @@
 #include "arm.h"
 #include "type.h"
 #include "memlayout.h"
+#include "proc.h"
+
+// TODO fix it
+extern struct cpu *cpu;
 
 void cli()
 {
