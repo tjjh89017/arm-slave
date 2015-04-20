@@ -14,4 +14,7 @@ void kmain()
 {
 	UART0_puts("kmain:\n");
 	cpu = &cpus[0];
+
+	pushcli();
+	popcli();
 }
