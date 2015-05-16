@@ -1,6 +1,12 @@
 #ifndef __MMU_H__
 #define __MMU_H__
 
+#include "type.h"
+
+// align
+#define align_up(size, al) (((uint)(size) + (uint)(al) - 1) & ~((uint)(al) - 1))
+#define align_down(size, al) ((uint)(size) & ~((uint)(al) - 1))
+
 // accesss permission AP
 #define AP_NA    0x00 // no access
 #define AP_KO    0x01 // kernel only
