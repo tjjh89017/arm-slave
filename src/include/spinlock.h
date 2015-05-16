@@ -12,4 +12,9 @@ struct spinlock {
 	// pcs
 };
 
+void initlock(struct spinlock*, char*);
+void acquire(struct spinlock*);
+void release(struct spinlock*);
+int holding(struct spinlock*);
+
 #endif
