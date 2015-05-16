@@ -41,6 +41,12 @@ SECTIONS
 		PROVIDE(boot_data_end = .);
 	}
 
+	. = 0x80020000;
+
+	.text : AT(0x20000){
+		*(.text .text.* .gnu.linkonce.t.*)
+	}
+
 	. = ALIGN(0x1000);
 
 	PROVIDE(data_start = .);
