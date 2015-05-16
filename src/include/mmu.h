@@ -3,6 +3,9 @@
 
 #include "type.h"
 
+typedef uint32 pgd_t;
+typedef uint32 pte_t;
+
 // align
 #define align_up(size, al) (((uint)(size) + (uint)(al) - 1) & ~((uint)(al) - 1))
 #define align_down(size, al) ((uint)(size) & ~((uint)(al) - 1))
