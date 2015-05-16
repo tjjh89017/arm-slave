@@ -1,5 +1,7 @@
 #include "arm.h"
 #include "mmu.h"
+#include "vm.h"
+#include "type.h"
 #include "spinlock.h"
 
 // define at kernel.ld
@@ -23,7 +25,7 @@ void init_vm()
 	kernel_mem.freelist = NULL;
 }
 
-void _kernel_mem_free(char *v)
+static void _kernel_mem_free(char *v)
 {
 	struct run *r = (struct run*)v;
 	r->next = kernel_mem.freelist;
