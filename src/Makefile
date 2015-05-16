@@ -2,7 +2,9 @@ CROSSCOMPILE := arm-none-eabi-
 
 QEMU = qemu-system-arm
 # -s for start gdbserver, -S for pause at startup
+ifdef DEBUG
 GDBSERVER = -s -S
+endif
 
 CC = $(CROSSCOMPILE)gcc
 # TODO fix it!
@@ -45,4 +47,6 @@ clean:
 qemu: $(PROG)
 	@clear
 	@echo "Press Ctrl-A and then X to terminate QEMU session\n"
+
 	$(QEMU) $(GDBSERVER) -M versatilepb -m 128 -cpu arm1176 -nographic -kernel kernel.elf
+
