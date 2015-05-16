@@ -34,7 +34,7 @@ static void _kernel_mem_free(char *v)
 
 void kernel_mem_freerange(uint32 low, uint32 high)
 {
-	while(low < hi){
+	while(low < high){
 		_kernel_mem_free((char*)low);
 		low += PTE_SIZE;
 	}
