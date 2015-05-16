@@ -25,6 +25,7 @@ OBJS = \
 	   boot.o \
 	   start.o \
 	   arm.o \
+	   spinlock.o \
 	   main.o \
 	   \
 	   UART0.o
