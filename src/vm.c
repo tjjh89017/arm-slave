@@ -7,8 +7,6 @@
 // define at kernel.ld
 extern char data[];
 
-pde_t *kernel_pde;
-
 // mem alloc
 struct run {
 	struct run *next;
