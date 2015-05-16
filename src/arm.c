@@ -25,7 +25,7 @@ void sti()
 	asm("msr cpsr_cxsf, %[v]" : : [v]"r"(v) :);
 }
 
-int int_enabled()
+int interrupt_enabled()
 {
 	int v;
 	asm("mrs %[v], cpsr" : [v]"=r"(v) : :);
@@ -35,7 +35,7 @@ int int_enabled()
 
 void pushcli()
 {
-	int enabled = int_enabled();
+	int enabled = interrupt_enabled();
 
 	cli();
 
@@ -47,7 +47,7 @@ void pushcli()
 
 void popcli()
 {
-	if(int_enabled()){
+	if(interrupt_enabled()){
 		// TODO need an error msg or Kernel panic output
 	}
 

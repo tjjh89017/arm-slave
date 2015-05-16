@@ -26,7 +26,7 @@ void cli();
 void sti();
 void pushcli();
 void popcli();
-int int_enabled();
+int interrupt_enabled();
 
 #endif
 
