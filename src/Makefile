@@ -19,6 +19,7 @@ LDFLAGS = -L./
 ASFLAGS = -march=armv6 -Iinclude/
 
 PROG = kernel.elf
+LDSCRIPT = kernel.ld
 OBJS = \
 	   string.o \
 	   \
@@ -40,7 +41,7 @@ OBJS = \
 
 all: $(PROG)
 
-$(PROG): $(OBJS)
+$(PROG): $(OBJS) $(LDSCRIPT)
 	$(LD) -T kernel.ld -o $(PROG) -O2 -nostdlib $(OBJS)
 
 clean:
