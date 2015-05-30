@@ -28,7 +28,7 @@ void UART0_putint(char *prefix, uint val, char *suffix)
 		UART0_puts(prefix);
 	}
 
-	for(index = sizeof(val) * - 4; index >= 0; index -= 4){
+	for(index = sizeof(val) * 8 - 4; index >= 0; index -= 4){
 		UART0_putc(arr[(val >> index) & 0x0f]);
 	}
 
